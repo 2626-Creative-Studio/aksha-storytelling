@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>AKSHA</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <section id="container">
+    <div id="scroll-down">
+      <p>Health workers are real people, helping other real people.<br>Here are stories of such people who have made a
+        difference.</p>
+      <hr>
+      <p>Scroll down to meet Rubi didi & Hira.</p>
+      <?php echo file_get_contents("svg/scroll.svg") ?>
+    </div>
+    <div id="scene-01">
+      <?php echo file_get_contents("svg/1-4.svg") ?>
+    </div>
+  </section>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TimelineMax.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.14.2/TweenMax.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.3/ScrollMagic.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.3/plugins/animation.gsap.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.3/plugins/debug.addIndicators.js"></script>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>
