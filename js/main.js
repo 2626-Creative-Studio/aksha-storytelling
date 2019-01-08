@@ -2,20 +2,25 @@ $(function () {
 
   var master = new TimelineMax();
 
-
   (function arrowAnimation() {
-    var tl1 = new TimelineMax();
-    tl1.to('#arrow', 0.5, {
+    var tl = new TimelineMax();
+    tl.to('#arrow', 0.5, {
       y: '-5%',
       yoyo: true,
       repeat: -1
     });
-    return tl1;
+    return tl;
   }());
 
   function frame1to4() {
     var tl = new TimelineMax();
 
+    // Set bg opacity of bg5-12 to 0
+    tl.set('#frame5to12 #bg', {
+      display: 'none'
+    })
+
+    // Background Animation
     tl
       .staggerFrom(
         [
@@ -138,7 +143,7 @@ $(function () {
         opacity: 0
       });
 
-    tl.to('#bg1-3', 0.5, {
+    tl.to('#bg1-3', 1, {
         y: $(window).height() + 50
       }, '+=0.5')
       .set('#bg1-3', {
@@ -174,25 +179,162 @@ $(function () {
         x: $(window).width() + 100
       }, '-=1')
 
+    tl
+      .to('#f4-woman1', 1, {
+        opacity: 0
+      })
+      .to('#f4-woman2', 1, {
+        opacity: 0
+      }, '-=1')
+      .to('#bg4', 1, {
+        opacity: 0
+      })
+
     return tl;
   }
 
+  function frame5to12() {
+  var tl = new TimelineMax();
+  // Clock Animation
+  TweenMax.from('#clock-hand3', 20, {
+    rotation: '360_ccw',
+    transformOrigin: "top 50%",
+    repeat: -1,
+    ease: 'linear'
+  });
+
+  // Set Frames opacity to 0
+  tl
+    .set('#f11-text1, #f12-text1', {
+      opacity: 0
+    });
+
+  // Background Animation
+  tl.from('#ground', 1, {
+    y: $(window).height()
+  })
+
+  tl
+    .from('#bed', 1, {
+      x: -900
+    })
+    .from('#clock, #window, #rod, #curtain', 1, {
+      opacity: 0
+    }, '-=1')
+    .from('#kitchen-window', 1, {
+      x: $(window).width()
+    }, '-=2')
+
+  // Frame 5 Animation
+  tl.from('#f5-text1, #f5-husband-wife', 1, {
+      opacity: 0
+    })
+    .to('#f5-text1, #f5-husband-wife', 1, {
+      opacity: 0
+    }, "+=1")
+
+  // Frame 6 Animation
+  tl.from('#f6-text1, #f6-husband-wife', 1, {
+      opacity: 0
+    })
+    .from('#f6-woman1', 1, {
+      x: $(window).width() + 50
+    }, '-=1')
+    .to('#f6-text1, #f6-husband-wife, #f6-woman1', 1, {
+      opacity: 0
+    }, "+=1")
+
+  // Frame 7 Animation
+  tl.from('#f7-woman1, #f7-woman2, #f7-msgbox, #f7-text1', 1, {
+      opacity: 0
+    })
+    .to('#f7-msgbox, #f7-text1', 1, {
+      opacity: 0
+    }, "+=1")
+
+
+  // Frame 8 Animation
+  tl.from('#f8-msgbox, #f8-text1', 1, {
+      opacity: 0
+    })
+    .to('#f7-woman2-hand', 1, {
+      rotation: '30_cw',
+      transformOrigin: 'top right'
+    })
+    .to('#f8-msgbox, #f8-text1', 1, {
+      opacity: 0
+    }, "+=1")
+    .to('#kitchen-window', 1, {
+      x: $(window).width()
+    }, '-=1')
+
+  tl.add('test');
+  
+  // Frame 9 Animation
+  tl.from('#f9-text1', 1, {
+      opacity: 0
+    })
+    .from('#f9-think-bubble', 1, {
+      scale: 0,
+      transformOrigin: 'center center'
+    }, '-=1')
+    .to('#f9-text1, #f9-think-bubble', 1, {
+      opacity: 0
+    }, '+=1')
+
+  // Frame 10 Animation
+  tl.from('#f10-text1', 1, {
+      opacity: 0
+    })
+    .from('#f10-think-bubble', 1, {
+      scale: 0,
+      transformOrigin: 'center center'
+    }, '-=1')
+    .to('#f10-think-bubble', 1, {
+      opacity: 0
+    }, '+=1')
+  
+  // Frame 11 Animation
+  tl.from('#f11-think-bubble', 1, {
+      scale: 0,
+      transformOrigin: 'center center'
+    }, '-=1')
+    .to('#f11-think-bubble', 1, {
+      opacity: 0
+    }, '+=1')
+  
+  // Frame 12 Animation
+  tl.from('#f12-think-bubble', 1, {
+      scale: 0,
+      transformOrigin: 'center center'
+    }, '-=1')
+    .to('#f12-think-bubble', 1, {
+      //opacity: 0
+    }, '+=1')
+
+  //Play
+  //tl.play('test');
+
+    return tl;
+  }
 
   // Adding Animation to the master Timeline 
   master.add(frame1to4());
+  master.add(frame5to12());
+  master.play('test');
 
   // ScrollMagic 
-  var ctrl = new ScrollMagic.Controller();
+    var ctrl = new ScrollMagic.Controller();
 
-  var scene = new ScrollMagic.Scene({
-      triggerElement: '#scene-01',
-      duration: 5000,
-      triggerHook: 0,
-      reverse: true
-    })
-    .setTween(master)
-    .setPin('#scene-01')
-    .addIndicators()
-    .addTo(ctrl);
+    var scene = new ScrollMagic.Scene({
+        triggerElement: '#frames',
+        duration: 13000,
+        triggerHook: 0,
+        reverse: true
+      })
+      .setTween(master)
+      .setPin('#frames')
+      .addIndicators()
+      .addTo(ctrl);
 
-})
+});

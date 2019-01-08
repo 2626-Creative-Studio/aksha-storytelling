@@ -41,9 +41,15 @@ body {
 }
 
 
-#scene-1 {
-  position: relative;
+#frame1to4 {
+  position: absolute;
   width: 100%;
   height: 100%;
-  background: #444;
 }
+
+#frame5to12 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+

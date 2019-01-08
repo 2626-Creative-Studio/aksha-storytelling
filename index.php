@@ -17,8 +17,15 @@
       <p>Scroll down to meet Rubi didi & Hira.</p>
       <?php echo file_get_contents("svg/scroll.svg") ?>
     </div>
-    <div id="scene-01">
-      <?php echo file_get_contents("svg/1-4.svg") ?>
+
+    <div id="frames">
+      <div id="frame1to4">
+        <?php echo file_get_contents("svg/1-4.svg") ?>
+      </div>
+  
+      <div id="frame5to12">
+        <?php echo file_get_contents("svg/5-12.svg") ?>
+      </div>
     </div>
   </section>
 
@@ -28,7 +35,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.3/ScrollMagic.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.3/plugins/animation.gsap.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.3/plugins/debug.addIndicators.js"></script>
-
+  
   <script src="js/main.js"></script>
 </body>
 
