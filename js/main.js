@@ -16,7 +16,7 @@ $(function () {
     var tl = new TimelineMax();
 
     // Set bg opacity of bg5-12 to 0
-    tl.set('#frame5to12 #bg', {
+    tl.set('#frame5to12 #bg, #frame13to16 #bg', {
       display: 'none'
     })
 
@@ -194,147 +194,270 @@ $(function () {
   }
 
   function frame5to12() {
-  var tl = new TimelineMax();
-  // Clock Animation
-  TweenMax.from('#clock-hand3', 20, {
-    rotation: '360_ccw',
-    transformOrigin: "top 50%",
-    repeat: -1,
-    ease: 'linear'
-  });
-
-  // Set Frames opacity to 0
-  tl
-    .set('#f11-text1, #f12-text1', {
-      opacity: 0
+    var tl = new TimelineMax();
+    // Clock Animation
+    TweenMax.from('#clock-hand3', 20, {
+      rotation: '360_ccw',
+      transformOrigin: "top 50%",
+      repeat: -1,
+      ease: 'linear'
     });
 
-  // Background Animation
-  tl.from('#ground', 1, {
-    y: $(window).height()
-  })
+    // Set Frames opacity to 0
+    tl
+      .set('#f11-text1, #f12-text1', {
+        opacity: 0
+      });
 
-  tl
-    .from('#bed', 1, {
-      x: -900
+    // Background Animation
+    tl.from('#ground', 1, {
+      y: $(window).height()
     })
-    .from('#clock, #window, #rod, #curtain', 1, {
-      opacity: 0
-    }, '-=1')
-    .from('#kitchen-window', 1, {
-      x: $(window).width()
-    }, '-=2')
 
-  // Frame 5 Animation
-  tl.from('#f5-text1, #f5-husband-wife', 1, {
-      opacity: 0
+    tl
+      .from('#bed', 1, {
+        x: -900
+      })
+      .from('#clock, #window, #rod, #curtain', 1, {
+        opacity: 0
+      }, '-=1')
+      .from('#kitchen-window', 1, {
+        x: $(window).width()
+      }, '-=2')
+
+    // Frame 5 Animation
+    tl.from('#f5-text1, #f5-husband-wife', 1, {
+        opacity: 0
+      })
+      .to('#f5-text1, #f5-husband-wife', 1, {
+        opacity: 0
+      }, "+=1")
+
+    // Frame 6 Animation
+    tl.from('#f6-text1, #f6-husband-wife', 1, {
+        opacity: 0
+      })
+      .from('#f6-woman1', 1, {
+        x: $(window).width() + 50
+      }, '-=1')
+      .to('#f6-text1, #f6-husband-wife, #f6-woman1', 1, {
+        opacity: 0
+      }, "+=1")
+
+    // Frame 7 Animation
+    tl.from('#f7-woman1, #f7-woman2, #f7-msgbox, #f7-text1', 1, {
+        opacity: 0
+      })
+      .to('#f7-msgbox, #f7-text1', 1, {
+        opacity: 0
+      }, "+=1")
+
+
+    // Frame 8 Animation
+    tl.from('#f8-msgbox, #f8-text1', 1, {
+        opacity: 0
+      })
+      .to('#f7-woman2-hand', 1, {
+        rotation: '30_cw',
+        transformOrigin: 'top right'
+      })
+      .to('#f8-msgbox, #f8-text1', 1, {
+        opacity: 0
+      }, "+=1")
+      .to('#kitchen-window', 1, {
+        x: $(window).width()
+      }, '-=1')
+
+    tl.add('test');
+
+    // Frame 9 Animation
+    tl.from('#f9-text1', 1, {
+        opacity: 0
+      })
+      .from('#f9-think-bubble', 1, {
+        scale: 0,
+        transformOrigin: 'center center'
+      }, '-=1')
+      .to('#f9-text1, #f9-think-bubble', 1, {
+        opacity: 0
+      }, '+=1')
+
+    // Frame 10 Animation
+    tl.from('#f10-text1', 1, {
+        opacity: 0
+      })
+      .from('#f10-think-bubble', 1, {
+        scale: 0,
+        transformOrigin: 'center center'
+      }, '-=1')
+      .to('#f10-think-bubble', 1, {
+        opacity: 0
+      }, '+=1')
+
+    // Frame 11 Animation
+    tl.from('#f11-think-bubble', 1, {
+        scale: 0,
+        transformOrigin: 'center center'
+      }, '-=1')
+      .to('#f11-think-bubble', 1, {
+        opacity: 0
+      }, '+=1')
+
+    // Frame 12 Animation
+    tl.from('#f12-think-bubble', 1, {
+        scale: 0,
+        transformOrigin: 'center center'
+      }, '-=1')
+      .to('#f12-think-bubble', 1, {
+        opacity: 0
+      }, '+=1')
+
+    //Play
+    //tl.play('test');
+
+    return tl;
+  }
+
+  function frame13to16() {
+    var tl = new TimelineMax();
+    // var tl = new TimelineMax({repeat:-1});
+
+    // Set opacity of other frames to 0
+    // tl.set('#f13, #f14', {
+    //   display: 'none'
+    // })
+
+    // Frame 13 Animation
+    tl
+      .from('#f13-ground', 1, {
+        y: $(window).height()
+      })
+      .from('#f13-crack1', 1, {
+        scale: 0,
+        transformOrigin: "center top",
+        y: 0
+      })
+      .from('#f13-crack2', 1, {
+        scale: 0,
+        transformOrigin: "center bottom",
+        y: $(window).height()
+      }, '-=1')
+      .from('#f13-text1', 1, {
+        scale: 0.5,
+        transformOrigin: 'center center',
+        opacity: 0
+      })
+      .to('#f13', 1, {
+        opacity: 0
+      }, '+=1')
+    // Frame 14 Animation
+    tl
+      .from('#f14-text', 1, {
+        scale: 0.5,
+        transformOrigin: 'center center',
+        opacity: 0
+      })
+      .staggerFrom(
+        [
+          '#f14-circle1',
+          '#f14-circle2',
+          '#f14-circle3',
+          '#f14-circle4'
+        ], 1, {
+          opacity: 0,
+          scale: 0.5,
+          transformOrigin: 'center center',
+          ease: Elastic.easeOut.config(1, 0.5)
+        }, 0.15)
+      .staggerFrom(
+        [
+          '#f14-text1',
+          '#f14-text2',
+          '#f14-text3',
+          '#f14-text4'
+        ], 1, {
+          opacity: 0,
+          scale: 0.5,
+          transformOrigin: 'center center',
+          ease: Elastic.easeOut.config(1, 0.5)
+        }, 0.15, '-=1.45')
+      .to('#f14', 1, {
+        opacity: 0
+      }, '+=1')
+
+    // Frame 15 Animation
+    tl
+      .from('#f15-ground', 1, {
+        y: $(window).height()
+      })
+      .staggerFrom(
+        [
+          '#f15-hut1',
+          '#f15-hut3',
+          '#f15-tree1',
+          '#f15-hut5',
+          '#f15-tree3',
+          '#f15-hut2',
+          '#f15-hut4',
+          '#f15-tree2',
+          '#f15-tree4',
+        ], 1, {
+          opacity: 0,
+          scale: 0.5,
+          transformOrigin: 'center center',
+          ease: Elastic.easeOut.config(1, 0.5)
+        }, 0.15)
+      .from('#f15-woman1', 1, {
+        opacity: 0,
+        scale: 0.5,
+        transformOrigin: 'center bottom',
+        ease: Elastic.easeOut.config(1, 0.5)
+      })
+      .from('#f15-woman2', 1, {
+        x: $(window).width()
+      }, '-=1')
+      .from('#f15-text1', 1, {
+        opacity: 0,
+        scale: 0,
+        transformOrigin: 'center center'
+      }, '-=1')
+      .to('#f15', 1, {
+        opacity: 0
+      }, '+=1')
+
+    // Frame 16 Animation
+    tl.from('#f16-text1', 1, {
+      opacity: 0,
+      scale: 0.5,
+      transformOrigin: 'center bottom',
+      ease: Elastic.easeOut.config(1, 0.5)
     })
-    .to('#f5-text1, #f5-husband-wife', 1, {
-      opacity: 0
-    }, "+=1")
-
-  // Frame 6 Animation
-  tl.from('#f6-text1, #f6-husband-wife', 1, {
-      opacity: 0
-    })
-    .from('#f6-woman1', 1, {
-      x: $(window).width() + 50
-    }, '-=1')
-    .to('#f6-text1, #f6-husband-wife, #f6-woman1', 1, {
-      opacity: 0
-    }, "+=1")
-
-  // Frame 7 Animation
-  tl.from('#f7-woman1, #f7-woman2, #f7-msgbox, #f7-text1', 1, {
-      opacity: 0
-    })
-    .to('#f7-msgbox, #f7-text1', 1, {
-      opacity: 0
-    }, "+=1")
-
-
-  // Frame 8 Animation
-  tl.from('#f8-msgbox, #f8-text1', 1, {
-      opacity: 0
-    })
-    .to('#f7-woman2-hand', 1, {
-      rotation: '30_cw',
-      transformOrigin: 'top right'
-    })
-    .to('#f8-msgbox, #f8-text1', 1, {
-      opacity: 0
-    }, "+=1")
-    .to('#kitchen-window', 1, {
-      x: $(window).width()
-    }, '-=1')
-
-  tl.add('test');
-  
-  // Frame 9 Animation
-  tl.from('#f9-text1', 1, {
-      opacity: 0
-    })
-    .from('#f9-think-bubble', 1, {
-      scale: 0,
-      transformOrigin: 'center center'
-    }, '-=1')
-    .to('#f9-text1, #f9-think-bubble', 1, {
-      opacity: 0
-    }, '+=1')
-
-  // Frame 10 Animation
-  tl.from('#f10-text1', 1, {
-      opacity: 0
-    })
-    .from('#f10-think-bubble', 1, {
-      scale: 0,
-      transformOrigin: 'center center'
-    }, '-=1')
-    .to('#f10-think-bubble', 1, {
-      opacity: 0
-    }, '+=1')
-  
-  // Frame 11 Animation
-  tl.from('#f11-think-bubble', 1, {
-      scale: 0,
-      transformOrigin: 'center center'
-    }, '-=1')
-    .to('#f11-think-bubble', 1, {
-      opacity: 0
-    }, '+=1')
-  
-  // Frame 12 Animation
-  tl.from('#f12-think-bubble', 1, {
-      scale: 0,
-      transformOrigin: 'center center'
-    }, '-=1')
-    .to('#f12-think-bubble', 1, {
-      //opacity: 0
-    }, '+=1')
-
-  //Play
-  //tl.play('test');
+      .to('#f16-text1', 1, {
+        opacity: 0
+      }, '+=1')
 
     return tl;
   }
 
   // Adding Animation to the master Timeline 
-  master.add(frame1to4());
-  master.add(frame5to12());
-  master.play('test');
+  // master.add(frame1to4());
+  //master.add(frame5to12());
+  master.add(frame13to16());
+
+  master.seek('test');
 
   // ScrollMagic 
-    var ctrl = new ScrollMagic.Controller();
+  var ctrl = new ScrollMagic.Controller();
 
-    var scene = new ScrollMagic.Scene({
-        triggerElement: '#frames',
-        duration: 13000,
-        triggerHook: 0,
-        reverse: true
-      })
-      .setTween(master)
-      .setPin('#frames')
-      .addIndicators()
-      .addTo(ctrl);
+  // var scene = new ScrollMagic.Scene({
+  //     triggerElement: '#frames',
+  //     duration: 13000,
+  //     triggerHook: 0,
+  //     reverse: true
+  //   })
+  //   .setTween(master)
+  //   .setPin('#frames')
+  //   .addIndicators()
+  //   .addTo(ctrl);
 
 });

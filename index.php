@@ -24,7 +24,11 @@
       </div>
   
       <div id="frame5to12">
-        <?php echo file_get_contents("svg/5-12.svg") ?>
+        <?php //echo file_get_contents("svg/5-12.svg") ?>
+      </div>
+      
+      <div id="frame13to16">
+        <?php echo file_get_contents("svg/13-16.svg") ?>
       </div>
     </div>
   </section>
