@@ -597,6 +597,17 @@ $(function () {
         transformOrigin: 'center center',
         ease: Elastic.easeOut.config(1, 0.5)
       })
+      .staggerTo(
+        [
+          '#f23-woman8-hand',
+          '#f23-woman6-hand',
+          '#f23-woman4-hand',
+          '#f23-woman1-hand',
+        ], 1, {
+          rotation: '245_ccw',
+          transformOrigin: '20% top',
+          ease: 'linear'
+        }, 0.15)
       .to('#f23, #f24-text1', 1, {
         opacity: 0
       }, '+=1')
